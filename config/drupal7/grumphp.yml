@@ -28,6 +28,7 @@ parameters:
     blank_line_after_opening_tag: true
     blank_line_before_statement:
       statements:
+        - case
         - break
         - continue
         - declare
