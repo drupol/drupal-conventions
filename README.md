@@ -9,6 +9,8 @@ The following checks are triggered:
 * Custom [PHP CS Fixer](https://github.com/FriendsOfPHP/PHP-CS-Fixer) configuration
 * Git commit message checks
 
+Drupal 7 and 8 are supported.
+
 ## Installation
 
 ```shell
@@ -19,10 +21,19 @@ composer require drupol/drupal-conventions --dev
 
 Manually add to your `composer.json` file:
 
+#### Drupal 8
 ```yaml
     "extra": {
         "grumphp": {
-            "config-default-path": "vendor/drupol/drupal-conventions/config/drupal/grumphp.yml"
+            "config-default-path": "vendor/drupol/drupal-conventions/config/drupal8/grumphp.yml"
+        }
+    }
+```
+#### Drupal 7
+```yaml
+    "extra": {
+        "grumphp": {
+            "config-default-path": "vendor/drupol/drupal-conventions/config/drupal7/grumphp.yml"
         }
     }
 ```
@@ -31,9 +42,15 @@ Manually add to your `composer.json` file:
 
 Edit the file `grumphp.yml.dist` or `grumphp.yml` and add on the top it:
 
+#### Drupal 8
 ```yaml
 imports:
-  - { resource: vendor/drupol/drupal-conventions/config/drupal/grumphp.yml }
+  - { resource: vendor/drupol/drupal-conventions/config/drupal8/grumphp.yml }
+```
+#### Drupal 7
+```yaml
+imports:
+  - { resource: vendor/drupol/drupal-conventions/config/drupal7/grumphp.yml }
 ```
 
 ## Contributing
