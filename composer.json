@@ -1,11 +1,14 @@
 {
     "name": "drupol/drupal-conventions",
     "description": "Drupal conventions for coding.",
-    "license": "EUPL-1.2",
+    "license": "MIT",
+    "type": "library",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "require": {
         "drupal/coder": "^8.3",
         "friendsofphp/php-cs-fixer": "^2",
-        "phpro/grumphp": "^0.14"
+        "phpro/grumphp": "^0.14 || ^0.13 || ^0.12"
     },
     "autoload": {
         "psr-4": {
