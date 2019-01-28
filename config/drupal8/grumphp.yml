@@ -122,3 +122,7 @@ parameters:
       exception_on_invalid_type: true
       parse_constant: true
       parse_custom_tags: true
+
+    jsonlint:
+      ignore_patterns: []
+      detect_key_conflicts: true
