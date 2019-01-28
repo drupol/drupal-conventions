@@ -7,7 +7,6 @@ It's based on [GrumPHP](https://github.com/phpro/grumphp) and comes with a defau
 The following checks are triggered:
 * [Drupal coder](https://www.drupal.org/project/coder) code sniffer's checks
 * Custom [PHP CS Fixer](https://github.com/FriendsOfPHP/PHP-CS-Fixer) configuration
-* Git commit message checks
 
 Drupal 7 and 8 are supported.
 
