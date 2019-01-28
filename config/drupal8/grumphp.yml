@@ -114,3 +114,11 @@ parameters:
       verbose: true
       allow_risky: true
       using_cache: false
+
+    yamllint:
+      whitelist_patterns: []
+      ignore_patterns: []
+      object_support: true
+      exception_on_invalid_type: true
+      parse_constant: true
+      parse_custom_tags: true
