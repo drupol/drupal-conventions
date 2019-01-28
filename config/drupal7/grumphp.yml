@@ -126,7 +126,3 @@ parameters:
     jsonlint:
       ignore_patterns: []
       detect_key_conflicts: true
-
-    gherkin:
-      directory: 'tests/features'
-      align: left
