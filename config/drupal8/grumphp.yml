@@ -106,16 +106,6 @@ parameters:
       metadata:
         priority: 300
 
-    # Commit message format.
-    git_commit_message:
-      matchers:
-        - '/^([A-Z]+\-\d+|Issue #\d+): [A-Z].+\./'
-      case_insensitive: false
-      enforce_no_subject_trailing_period: false
-      multiline: false
-      max_body_width: 0
-      max_subject_width: 0
-
     # PHP CS Fixer
     phpcsfixer2:
       config: '%tasks.phpcsfixer2.config%'
