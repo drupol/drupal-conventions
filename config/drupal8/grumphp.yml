@@ -1,5 +1,6 @@
 imports:
-  - {resource: phpcsfixer.rules.yml }
+  - { resource: tasks.phpcsfixer2.config.yml }
+  - { resource: tasks.phpcsfixer2.rules.yml }
 
 parameters:
   process_timeout: 3600
@@ -23,11 +24,6 @@ parameters:
   tasks.phpcs.standard: ./vendor/drupal/coder/coder_sniffer/Drupal
   tasks.phpcs.warning_severity: ~
 
-  # PHP CS Fixer parameters
-  tasks.phpcsfixer2.config: ./vendor/drupol/drupal-conventions/config/drupal8/php_cs_fixer.config.php
-  tasks.phpcsfixer2.rules: %phpcsfixer.rules%
-
-
   # Tasks.
   tasks:
     # PHP Code Sniffer.
@@ -49,6 +45,7 @@ parameters:
       allow_risky: true
       using_cache: false
 
+    # YAML Lint
     yamllint:
       whitelist_patterns: []
       ignore_patterns: []
@@ -57,6 +54,7 @@ parameters:
       parse_constant: true
       parse_custom_tags: true
 
+    # JSON Lint
     jsonlint:
       ignore_patterns: []
       detect_key_conflicts: true

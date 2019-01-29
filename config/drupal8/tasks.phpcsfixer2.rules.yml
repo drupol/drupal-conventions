@@ -1,5 +1,5 @@
 parameters:
-  phpcsfixer.rules:
+  tasks.phpcsfixer2.rules:
     array_syntax:
       syntax: short
     blank_line_after_opening_tag: true

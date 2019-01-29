@@ -8,7 +8,6 @@ $finder = PhpCsFixer\Finder::create()
   ->name('*.module')
   ->name('*.profile')
   ->name('*.php')
-  ->name('*.theme')
   ->ignoreDotFiles(true)
   ->ignoreVCS(true)
   ->exclude(['build', 'libraries', 'node_modules', 'vendor']);
