@@ -16,11 +16,11 @@ parameters:
     declare_equal_normalize:
       space: single
     declare_strict_types: true
-    Drupal/tab_to_space: true
     Drupal/uppercase_constants: true
     elseif: true
     fully_qualified_strict_types: true
     include: true
+    indentation_type: true
     is_null: true
     lowercase_static_reference: true
     native_function_invocation: false

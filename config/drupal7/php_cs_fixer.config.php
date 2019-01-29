@@ -14,7 +14,8 @@ $finder = PhpCsFixer\Finder::create()
 
 return PhpCsFixer\Config::create()
   ->registerCustomFixers([
-    new drupol\DrupalConventions\PhpCsFixer\Fixer\UppercaseConstantsFixer(),
-    new \drupol\DrupalConventions\PhpCsFixer\Fixer\DrupalTabToSpaceFixer(),
+    new drupol\DrupalConventions\PhpCsFixer\Fixer\UppercaseConstantsFixer()
   ])
+  ->setIndent('    ')
+  ->setLineEnding("\n")
   ->setFinder($finder);
