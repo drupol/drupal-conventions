@@ -16,13 +16,13 @@ parameters:
     declare_equal_normalize:
       space: single
     declare_strict_types: false
+    Drupal/tab_to_space: true
+    Drupal/uppercase_constants: true
     elseif: true
     fully_qualified_strict_types: true
     include: true
     is_null: true
     lowercase_static_reference: true
-    # Drupalism: lowercase_constants (not configurable yet, see https://github.com/FriendsOfPHP/PHP-CS-Fixer/pull/4275)
-    Drupal/uppercase_constants: true
     native_function_invocation: false
     no_blank_lines_after_class_opening: false
     no_closing_tag: true
