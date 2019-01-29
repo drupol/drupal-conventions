@@ -16,6 +16,7 @@ parameters:
     declare_equal_normalize:
       space: single
     declare_strict_types: true
+    Drupal/inline_comment_spacer: true
     Drupal/uppercase_constants: true
     elseif: true
     fully_qualified_strict_types: true
