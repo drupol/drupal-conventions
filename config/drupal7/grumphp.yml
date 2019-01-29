@@ -22,77 +22,8 @@ parameters:
 
   # PHP CS Fixer parameters
   tasks.phpcsfixer2.config: ./vendor/drupol/drupal-conventions/config/drupal7/php_cs_fixer.config.php
-  tasks.phpcsfixer2.rules:
-    array_syntax:
-      syntax: long
-    blank_line_after_opening_tag: true
-    blank_line_before_statement:
-      statements:
-        - case
-        - break
-        - continue
-        - declare
-        - return
-        - throw
-        - try
-    class_attributes_separation: false
-    declare_equal_normalize:
-      space: single
-    declare_strict_types: false
-    elseif: true
-    fully_qualified_strict_types: true
-    include: true
-    is_null: true
-    lowercase_static_reference: true
-    # Drupalism: lowercase_constants (not configurable yet, see https://github.com/FriendsOfPHP/PHP-CS-Fixer/pull/4275)
-    Drupal/uppercase_constants: true
-    native_function_invocation: false
-    no_blank_lines_after_class_opening: false
-    no_closing_tag: true
-    no_extra_blank_lines:
-      tokens:
-        - extra
-        - parenthesis_brace_block
-        - square_brace_block
-        - return
-        - throw
-        - use
-        - use_trait
-    no_short_echo_tag: true
-    no_trailing_whitespace_in_comment: true
-    no_unneeded_final_method: true
-    no_unused_imports: true
-    ordered_class_elements:
-      order:
-        - use_trait
-        - constant_public
-        - constant_protected
-        - constant_private
-        - property_public
-        - property_protected
-        - property_private
-        - construct
-        - destruct
-        - magic
-        - phpunit
-        - method_public
-        - method_protected
-        - method_private
-      sortAlgorithm: alpha
-    ordered_imports: ~
-    return_type_declaration:
-      space_before: none
-    single_blank_line_at_eof: true
-    single_line_after_imports: true
-    strict_comparison: true
-    strict_param: true
-    trailing_comma_in_multiline_array: true
-    visibility_required: true
-    yoda_style:
-      equal: false
-      identical: false
-      less_and_greater: false
-      always_move_variable: false
+  tasks.phpcsfixer2.rules: %phpcsfixer.rules%
+
 
   # Tasks.
   tasks:
