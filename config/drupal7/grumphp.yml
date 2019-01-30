@@ -26,15 +26,11 @@ parameters:
 
   # Tasks.
   tasks:
-    # PHP Code Sniffer.
-    phpcs:
-      standard: '%tasks.phpcs.standard%'
-      ignore_patterns: '%tasks.phpcs.ignore_patterns%'
-      triggered_by: '%tasks.phpcs.triggered_by%'
-      whitelist_patterns: '%tasks.phpcs.whitelist_patterns%'
-      warning_severity: '%tasks.phpcs.warning_severity%'
+    # PHP Lint
+    phplint:
+      triggered_by: ['php', 'module', 'install', 'profile', 'inc']
       metadata:
-        priority: 300
+        priority: 5000
 
     # PHP CS Fixer
     phpcsfixer2:
@@ -44,10 +40,18 @@ parameters:
       verbose: true
       allow_risky: true
       using_cache: false
+      metadata:
+        priority: 4000
 
-    # PHP Lint
-    phplint:
-      triggered_by: ['php', 'module', 'install', 'profile', 'inc']
+    # PHP Code Sniffer.
+    phpcs:
+      standard: '%tasks.phpcs.standard%'
+      ignore_patterns: '%tasks.phpcs.ignore_patterns%'
+      triggered_by: '%tasks.phpcs.triggered_by%'
+      whitelist_patterns: '%tasks.phpcs.whitelist_patterns%'
+      warning_severity: '%tasks.phpcs.warning_severity%'
+      metadata:
+        priority: 3000
 
     # YAML Lint
     yamllint:
@@ -57,8 +61,12 @@ parameters:
       exception_on_invalid_type: true
       parse_constant: true
       parse_custom_tags: true
+      metadata:
+        priority: 2000
 
     # JSON Lint
     jsonlint:
       ignore_patterns: []
       detect_key_conflicts: true
+      metadata:
+        priority: 1000
