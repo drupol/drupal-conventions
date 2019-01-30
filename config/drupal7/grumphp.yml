@@ -46,7 +46,8 @@ parameters:
       using_cache: false
 
     # PHP Lint
-    phplint: ~
+    phplint:
+      triggered_by: ['php', 'module', 'install', 'profile', 'inc']
 
     # YAML Lint
     yamllint:
