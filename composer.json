@@ -1,10 +1,9 @@
 {
     "name": "drupol/drupal-conventions",
     "description": "Drupal conventions for coding.",
+    "keywords": ["drupal", "coding style", "phpcs", "coding standard"],
     "license": "MIT",
     "type": "library",
-    "minimum-stability": "dev",
-    "prefer-stable": true,
     "require": {
         "drupal/coder": "^8.3",
         "friendsofphp/php-cs-fixer": "^2",
