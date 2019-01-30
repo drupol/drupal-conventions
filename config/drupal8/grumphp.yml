@@ -45,6 +45,9 @@ parameters:
       allow_risky: true
       using_cache: false
 
+    # PHP Lint
+    phplint: ~
+
     # YAML Lint
     yamllint:
       whitelist_patterns: []

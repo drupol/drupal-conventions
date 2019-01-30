@@ -45,6 +45,9 @@ parameters:
       allow_risky: true
       using_cache: false
 
+    # PHP Lint
+    phplint: ~
+
     # YAML Lint
     yamllint:
       whitelist_patterns: []
@@ -54,6 +57,7 @@ parameters:
       parse_constant: true
       parse_custom_tags: true
 
+    # JSON Lint
     jsonlint:
       ignore_patterns: []
       detect_key_conflicts: true
