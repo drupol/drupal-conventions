@@ -17,6 +17,7 @@ return PhpCsFixer\Config::create()
     array(
       new drupol\DrupalConventions\PhpCsFixer\Fixer\UppercaseConstantsFixer(),
       new drupol\DrupalConventions\PhpCsFixer\Fixer\InlineCommentSpacerFixer(),
+      new \drupol\DrupalConventions\PhpCsFixer\Fixer\LineLengthFixer('    ', "\n"),
     )
   )
   ->setIndent('    ')

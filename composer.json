@@ -1,14 +1,14 @@
 {
     "name": "drupol/drupal-conventions",
     "description": "Drupal conventions for coding.",
-    "keywords": ["drupal", "coding style", "phpcs", "coding standard"],
+    "keywords": ["drupal", "coding style", "phpcs", "coding standard", "php-cs-fixer"],
     "license": "MIT",
     "type": "library",
     "require": {
-        "drupal/coder": "^8.3",
-        "friendsofphp/php-cs-fixer": "^2",
+        "drupal/coder": "~8.3",
+        "friendsofphp/php-cs-fixer": "~2",
         "phpro/grumphp": "^0.14 || ^0.13 || ^0.12",
-        "symplify/coding-standard": "^5.4"
+        "symplify/coding-standard": "~5"
     },
     "autoload": {
         "psr-4": {

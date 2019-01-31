@@ -8,8 +8,29 @@ use PhpCsFixer\FixerDefinition\FixerDefinition;
 use PhpCsFixer\Tokenizer\Token;
 use PhpCsFixer\Tokenizer\Tokens;
 
+/**
+ * Class InlineCommentSpacerFixer.
+ */
 final class InlineCommentSpacerFixer implements DefinedFixerInterface
 {
+  /**
+   * {@inheritdoc}
+   */
+  public function fix(\SplFileInfo $file, Tokens $tokens) {
+    foreach ($tokens as $index => $token) {
+      $content = $token->getContent();
+      if (! $token->isComment() || mb_strpos($content, '//') !== 0 || mb_strpos($content, '// ') === 0) {
+        continue;
+      }
+
+      $content = \substr_replace($content, ' ', 2, 0);
+      $tokens[$index] = new Token([$token->getId(), $content]);
+    }
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function getDefinition()
   {
     return new FixerDefinition(
@@ -20,62 +41,38 @@ final class InlineCommentSpacerFixer implements DefinedFixerInterface
     );
   }
 
-  public function getPriority()
-  {
-    return 30;
-  }
-
-  public function isCandidate(Tokens $tokens)
-  {
-    return $tokens->isTokenKindFound(\T_COMMENT);
-  }
-
   /**
-   * Check if fixer is risky or not.
-   *
-   * Risky fixer could change code behavior!
-   *
-   * @return bool
-   */
-  public function isRisky() {
-    return false;
-  }
-
-  /**
-   * Fixes a file.
-   *
-   * @param \SplFileInfo $file A \SplFileInfo instance
-   * @param Tokens $tokens Tokens collection
-   */
-  public function fix(\SplFileInfo $file, Tokens $tokens) {
-    foreach ($tokens as $index => $token) {
-      $content = $token->getContent();
-      if (! $token->isComment() || mb_strpos($content, '//') !== 0 || mb_strpos($content, '// ') === 0) {
-        continue;
-      }
-
-      $content        = \substr_replace($content, ' ', 2, 0);
-      $tokens[$index] = new Token([$token->getId(), $content]);
-    }
-  }
-
-  /**
-   * Returns the name of the fixer.
-   *
-   * The name must be all lowercase and without any spaces.
-   *
-   * @return string The name of the fixer
+   * {@inheritdoc}
    */
   public function getName() {
     return 'Drupal/inline_comment_spacer';
   }
 
   /**
-   * Returns true if the file is supported by this fixer.
-   *
-   * @param \SplFileInfo $file
-   *
-   * @return bool true if the file is supported by this fixer, false otherwise
+   * {@inheritdoc}
+   */
+  public function getPriority()
+  {
+    return 30;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function isCandidate(Tokens $tokens)
+  {
+    return $tokens->isTokenKindFound(\T_COMMENT);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function isRisky() {
+    return false;
+  }
+
+  /**
+   * {@inheritdoc}
    */
   public function supports(\SplFileInfo $file) {
     return true;

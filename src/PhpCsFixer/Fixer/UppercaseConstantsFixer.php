@@ -12,16 +12,47 @@ use PhpCsFixer\Tokenizer\Tokens;
 /**
  * Class UppercaseConstantsFixer.
  */
-class UppercaseConstantsFixer implements DefinedFixerInterface {
+class UppercaseConstantsFixer implements DefinedFixerInterface
+{
+  /**
+   * {@inheritdoc}
+   */
+  public function fix(\SplFileInfo $file, Tokens $tokens) {
+    foreach ($tokens as $index => $token) {
+      if (!$token->isNativeConstant()) {
+        continue;
+      }
+
+      if ($this->isNeighbourAccepted($tokens, $tokens->getPrevMeaningfulToken($index)) &&
+        $this->isNeighbourAccepted($tokens, $tokens->getNextMeaningfulToken($index))
+      ) {
+        $tokens[$index] = new Token([$token->getId(), strtoupper($token->getContent())]);
+      }
+    }
+  }
 
   /**
    * {@inheritdoc}
    */
   public function getDefinition() {
     return new FixerDefinition(
-        'The PHP constants `true`, `false`, and `null` MUST be in upper case.',
-        [new CodeSample("<?php\n\$a = FALSE;\n\$b = True;\n\$c = nuLL;\n")]
+      'The PHP constants `true`, `false`, and `null` MUST be in upper case.',
+      [new CodeSample("<?php\n\$a = FALSE;\n\$b = True;\n\$c = nuLL;\n")]
     );
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getName() {
+    return 'Drupal/uppercase_constants';
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getPriority() {
+    return 0;
   }
 
   /**
@@ -32,10 +63,21 @@ class UppercaseConstantsFixer implements DefinedFixerInterface {
   }
 
   /**
-   * @param \PhpCsFixer\Tokenizer\Tokens $tokens
-   * @param int $index
-   *
-   * @return bool
+   * {@inheritdoc}
+   */
+  public function isRisky() {
+    return FALSE;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function supports(\SplFileInfo $file) {
+    return TRUE;
+  }
+
+  /**
+   * {@inheritdoc}
    */
   private function isNeighbourAccepted(Tokens $tokens, $index) {
     static $forbiddenTokens = [
@@ -65,71 +107,4 @@ class UppercaseConstantsFixer implements DefinedFixerInterface {
 
     return !$token->isGivenKind($forbiddenTokens);
   }
-
-  /**
-   * Check if fixer is risky or not.
-   *
-   * Risky fixer could change code behavior!
-   *
-   * @return bool
-   */
-  public function isRisky() {
-    return FALSE;
-  }
-
-  /**
-   * Fixes a file.
-   *
-   * @param \SplFileInfo $file
-   *   A \SplFileInfo instance.
-   * @param \PhpCsFixer\Tokenizer\Tokens $tokens
-   *   Tokens collection.
-   */
-  public function fix(\SplFileInfo $file, Tokens $tokens) {
-    foreach ($tokens as $index => $token) {
-      if (!$token->isNativeConstant()) {
-        continue;
-      }
-
-      if ($this->isNeighbourAccepted($tokens, $tokens->getPrevMeaningfulToken($index)) &&
-        $this->isNeighbourAccepted($tokens, $tokens->getNextMeaningfulToken($index))
-      ) {
-        $tokens[$index] = new Token([$token->getId(), strtoupper($token->getContent())]);
-      }
-    }
-  }
-
-  /**
-   * Returns the name of the fixer.
-   *
-   * The name must be all lowercase and without any spaces.
-   *
-   * @return string The name of the fixer
-   */
-  public function getName() {
-    return 'Drupal/uppercase_constants';
-  }
-
-  /**
-   * Returns the priority of the fixer.
-   *
-   * The default priority is 0 and higher priorities are executed first.
-   *
-   * @return int
-   */
-  public function getPriority() {
-    return 0;
-  }
-
-  /**
-   * Returns true if the file is supported by this fixer.
-   *
-   * @param \SplFileInfo $file
-   *
-   * @return bool true if the file is supported by this fixer, false otherwise
-   */
-  public function supports(\SplFileInfo $file) {
-    return TRUE;
-  }
-
 }

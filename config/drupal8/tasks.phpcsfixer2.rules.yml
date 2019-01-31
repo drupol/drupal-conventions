@@ -17,6 +17,10 @@ parameters:
       space: single
     declare_strict_types: true
     Drupal/inline_comment_spacer: true
+    Drupal/line_length:
+      line_length: 80
+      inline_short_lines: false
+      break_long_lines: true
     Drupal/uppercase_constants: true
     elseif: true
     fully_qualified_strict_types: true
@@ -60,8 +64,6 @@ parameters:
     ordered_imports: ~
     return_type_declaration:
       space_before: none
-    Symplify/CodingStandard/Fixer/LineLength:
-      line_length: 80
     single_blank_line_at_eof: true
     single_line_after_imports: true
     strict_comparison: true
