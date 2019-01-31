@@ -1,6 +1,5 @@
 imports:
   - { resource: tasks.phpcsfixer2.config.yml }
-  - { resource: tasks.phpcsfixer2.rules.yml }
 
 parameters:
   process_timeout: 3600
