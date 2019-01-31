@@ -13,6 +13,7 @@ parameters:
     - vendor/
     - node_modules/
     - tests/fixtures/
+    - spec
   tasks.phpcs.triggered_by:
     - inc
     - install
