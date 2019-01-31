@@ -13,12 +13,5 @@ $finder = PhpCsFixer\Finder::create()
   ->ignoreVCS(true)
   ->exclude(['build', 'libraries', 'node_modules', 'vendor']);
 
-return PhpCsFixer\Config::create()
-  ->registerCustomFixers([
-    new drupol\DrupalConventions\PhpCsFixer\Fixer\UppercaseConstantsFixer(),
-    new \drupol\DrupalConventions\PhpCsFixer\Fixer\InlineCommentSpacerFixer(),
-    new \drupol\DrupalConventions\PhpCsFixer\Fixer\LineLengthFixer('    ', "\n"),
-  ])
-  ->setIndent('    ')
-  ->setLineEnding("\n")
+return \drupol\DrupalConventions\PhpCsFixer\Config\Drupal8::create()
   ->setFinder($finder);
