@@ -6,6 +6,7 @@ use drupol\DrupalConventions\PhpCsFixer\Fixer\InlineCommentSpacerFixer;
 use drupol\DrupalConventions\PhpCsFixer\Fixer\LineLengthFixer;
 use drupol\DrupalConventions\PhpCsFixer\Fixer\UppercaseConstantsFixer;
 use PhpCsFixer\Config;
+use PhpCsFixer\Finder;
 use Symfony\Component\Yaml\Yaml;
 
 /**
@@ -50,5 +51,23 @@ abstract class Drupal extends Config
    */
   public function getLineEnding() {
     return "\n";
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getFinder() {
+    return Finder::create()
+      ->files()
+      ->name('*.inc')
+      ->name('*.install')
+      ->name('*.module')
+      ->name('*.profile')
+      ->name('*.php')
+      ->name('*.theme')
+      ->ignoreDotFiles(true)
+      ->ignoreVCS(true)
+      ->exclude(['build', 'libraries', 'node_modules', 'vendor'])
+      ->in($_SERVER['PWD']);
   }
 }
