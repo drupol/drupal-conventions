@@ -2,12 +2,10 @@
 
 namespace drupol\DrupalConventions\PhpCsFixer\Config;
 
-use PhpCsFixer\Config;
-
 /**
  * Class Drupal8.
  */
-class Drupal8 extends Config
+class Drupal8 extends Drupal
 {
   /**
    * @var string
