@@ -23,6 +23,8 @@ parameters:
   Drupal/uppercase_constants: true
   elseif: true
   fully_qualified_strict_types: true
+  function_declaration:
+    closure_function_spacing: one
   include: true
   indentation_type: true
   is_null: true

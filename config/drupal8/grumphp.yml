@@ -35,22 +35,12 @@ parameters:
     # PHP CS Fixer
     phpcsfixer2:
       config: '%tasks.phpcsfixer2.config%'
-      config_contains_finder: false
+      config_contains_finder: true
       verbose: true
       allow_risky: true
       using_cache: false
       metadata:
         priority: 4000
-
-    # PHP Code Sniffer.
-    phpcs:
-      standard: '%tasks.phpcs.standard%'
-      ignore_patterns: '%tasks.phpcs.ignore_patterns%'
-      triggered_by: '%tasks.phpcs.triggered_by%'
-      whitelist_patterns: '%tasks.phpcs.whitelist_patterns%'
-      warning_severity: '%tasks.phpcs.warning_severity%'
-      metadata:
-        priority: 3000
 
     # YAML Lint
     yamllint:
