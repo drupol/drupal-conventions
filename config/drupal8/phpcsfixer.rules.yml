@@ -19,6 +19,7 @@ parameters:
   declare_equal_normalize:
     space: single
   declare_strict_types: true
+  Drupal/blank_line_before_end_of_class: true
   Drupal/inline_comment_spacer: true
   # WIP
   #Drupal/line_length:
