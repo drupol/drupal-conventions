@@ -30,13 +30,11 @@ abstract class Drupal extends Config
    * {@inheritdoc}
    */
   public function getRules() {
-    $rules = parent::getRules();
-
     $filename = __DIR__ . '/../../../' . $this->filename;
 
     $parsed = (array) Yaml::parseFile($filename) + ['parameters' => []];
 
-    return $parsed['parameters'] + $rules;
+    return $parsed['parameters'];
   }
 
   /**

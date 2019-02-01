@@ -16,10 +16,11 @@ parameters:
     space: single
   declare_strict_types: true
   Drupal/inline_comment_spacer: true
-  Drupal/line_length:
-    line_length: 80
-    inline_short_lines: false
-    break_long_lines: true
+  # WIP
+  #Drupal/line_length:
+  #  line_length: 80
+  #  inline_short_lines: false
+  #  break_long_lines: true
   Drupal/uppercase_constants: true
   elseif: true
   fully_qualified_strict_types: true
