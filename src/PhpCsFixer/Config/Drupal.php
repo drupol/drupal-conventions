@@ -41,7 +41,7 @@ abstract class Drupal extends Config
    * {@inheritdoc}
    */
   public function getIndent() {
-    return '    ';
+    return '  ';
   }
 
   /**
