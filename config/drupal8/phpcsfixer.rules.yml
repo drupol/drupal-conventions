@@ -31,7 +31,8 @@ parameters:
   function_declaration:
     closure_function_spacing: one
   include: true
-  indentation_type: true
+  # Disable this rules - it conflicts with 'braces'
+  # indentation_type: true
   is_null: true
   lowercase_static_reference: true
   method_argument_space: true
