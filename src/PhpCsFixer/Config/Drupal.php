@@ -2,6 +2,7 @@
 
 namespace drupol\DrupalConventions\PhpCsFixer\Config;
 
+use drupol\DrupalConventions\PhpCsFixer\Fixer\BlankLineBeforeEndOfClass;
 use drupol\DrupalConventions\PhpCsFixer\Fixer\InlineCommentSpacerFixer;
 use drupol\DrupalConventions\PhpCsFixer\Fixer\LineLengthFixer;
 use drupol\DrupalConventions\PhpCsFixer\Fixer\UppercaseConstantsFixer;
@@ -23,6 +24,7 @@ abstract class Drupal extends Config
       new UppercaseConstantsFixer(),
       new InlineCommentSpacerFixer(),
       new LineLengthFixer($this->getIndent(), $this->getLineEnding()),
+      new BlankLineBeforeEndOfClass($this->getIndent(), $this->getLineEnding()),
     ];
   }
 
