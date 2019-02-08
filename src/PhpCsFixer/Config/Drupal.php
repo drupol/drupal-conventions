@@ -3,6 +3,7 @@
 namespace drupol\DrupalConventions\PhpCsFixer\Config;
 
 use drupol\DrupalConventions\PhpCsFixer\Fixer\BlankLineBeforeEndOfClass;
+use drupol\DrupalConventions\PhpCsFixer\Fixer\ControlStructureCurlyBracketsElseFixer;
 use drupol\DrupalConventions\PhpCsFixer\Fixer\InlineCommentSpacerFixer;
 use drupol\DrupalConventions\PhpCsFixer\Fixer\LineLengthFixer;
 use drupol\DrupalConventions\PhpCsFixer\Fixer\UppercaseConstantsFixer;
@@ -21,10 +22,11 @@ abstract class Drupal extends Config
    */
   public function getCustomFixers() {
     return [
-      new UppercaseConstantsFixer(),
+      new BlankLineBeforeEndOfClass($this->getIndent(), $this->getLineEnding()),
+      new ControlStructureCurlyBracketsElseFixer($this->getIndent(), $this->getLineEnding()),
       new InlineCommentSpacerFixer(),
       new LineLengthFixer($this->getIndent(), $this->getLineEnding()),
-      new BlankLineBeforeEndOfClass($this->getIndent(), $this->getLineEnding()),
+      new UppercaseConstantsFixer(),
     ];
   }
 
