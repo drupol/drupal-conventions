@@ -7,39 +7,19 @@ use drupol\DrupalConventions\PhpCsFixer\Fixer\ControlStructureCurlyBracketsElseF
 use drupol\DrupalConventions\PhpCsFixer\Fixer\InlineCommentSpacerFixer;
 use drupol\DrupalConventions\PhpCsFixer\Fixer\LineLengthFixer;
 use drupol\DrupalConventions\PhpCsFixer\Fixer\UppercaseConstantsFixer;
-use PhpCsFixer\Config;
+use PhpCsFixer\Config as PhpCsFixerConfig;
 use PhpCsFixer\Finder;
 use Symfony\Component\Yaml\Yaml;
 
 /**
  * Class Drupal.
  */
-abstract class Drupal extends Config
+abstract class Drupal extends PhpCsFixerConfig implements Config
 {
-
   /**
-   * {@inheritdoc}
+   * @var string
    */
-  public function getCustomFixers() {
-    return [
-      new BlankLineBeforeEndOfClass($this->getIndent(), $this->getLineEnding()),
-      new ControlStructureCurlyBracketsElseFixer($this->getIndent(), $this->getLineEnding()),
-      new InlineCommentSpacerFixer(),
-      new LineLengthFixer($this->getIndent(), $this->getLineEnding()),
-      new UppercaseConstantsFixer(),
-    ];
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function getRules() {
-    $filename = __DIR__ . '/../../../' . $this->filename;
-
-    $parsed = (array) Yaml::parseFile($filename) + ['parameters' => []];
-
-    return $parsed['parameters'];
-  }
+  public static $rules = '/../../../config/drupal/phpcsfixer.rules.yml';
 
   /**
    * {@inheritdoc}
@@ -71,5 +51,73 @@ abstract class Drupal extends Config
       ->ignoreVCS(true)
       ->exclude(['build', 'libraries', 'node_modules', 'vendor'])
       ->in($_SERVER['PWD']);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function alterCustomFixers(array &$fixers): void {
+
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function alterRules(array &$rules): void {
+
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  final public function getCustomFixers(): array
+  {
+    $fixers = parent::getCustomFixers();
+
+    $fixers = array_merge($fixers, [
+      new BlankLineBeforeEndOfClass($this->getIndent(), $this->getLineEnding()),
+      new ControlStructureCurlyBracketsElseFixer($this->getIndent(), $this->getLineEnding()),
+      new InlineCommentSpacerFixer(),
+      new LineLengthFixer($this->getIndent(), $this->getLineEnding()),
+      new UppercaseConstantsFixer(),
+    ]);
+
+    // @todo: is this really required.
+    $this->alterCustomFixers($fixers);
+
+    return $fixers;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  final public function getRules() {
+    $rules = parent::getRules();
+
+    $classes = class_parents(static::class);
+    array_unshift($classes, static::class);
+
+    foreach (array_reverse(array_values($classes)) as $class) {
+      if (!isset($class::$rules)) {
+        continue;
+      }
+
+      $filename = __DIR__ . $class::$rules;
+
+      if (!file_exists($filename)) {
+        continue;
+      }
+
+      $parsed = (array) Yaml::parseFile($filename);
+      $parsed['parameters'] = (array) $parsed['parameters'] + ['rules' => []];
+      $rules = array_merge($rules, $parsed['parameters']['rules']);
+    }
+
+    // @todo: is this really required.
+    $this->alterRules($rules);
+
+    ksort($rules);
+
+    return $rules;
   }
 }

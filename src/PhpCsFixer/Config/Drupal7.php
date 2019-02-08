@@ -10,7 +10,7 @@ class Drupal7 extends Drupal
   /**
    * @var string
    */
-  public $filename = 'config/drupal7/phpcsfixer.rules.yml';
+  public static $rules = '/../../../config/drupal7/phpcsfixer.rules.yml';
 
   /**
    * {@inheritdoc}
