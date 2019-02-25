@@ -41,7 +41,7 @@ class ControlStructureCurlyBracketsElseFixer implements DefinedFixerInterface, W
   public function fix(\SplFileInfo $file, Tokens $tokens)
   {
     foreach ($tokens as $index => $token) {
-      if (!$token->isGivenKind(T_ELSE)) {
+      if (!$token->isGivenKind([T_ELSE, T_ELSEIF])) {
         continue;
       }
 
@@ -105,7 +105,7 @@ class ControlStructureCurlyBracketsElseFixer implements DefinedFixerInterface, W
    * {@inheritdoc}
    */
   public function isCandidate(Tokens $tokens) {
-    return $tokens->isAllTokenKindsFound([T_IF, T_ELSE]);
+    return $tokens->isAnyTokenKindsFound([T_IF, T_ELSE, T_ELSEIF]);
   }
 
   /**
