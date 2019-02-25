@@ -19,7 +19,12 @@ final class InlineCommentSpacerFixer implements DefinedFixerInterface
   public function fix(\SplFileInfo $file, Tokens $tokens) {
     foreach ($tokens as $index => $token) {
       $content = $token->getContent();
+
       if (! $token->isComment() || mb_strpos($content, '//') !== 0 || mb_strpos($content, '// ') === 0) {
+        continue;
+      }
+
+      if ('//' === $token->getContent()) {
         continue;
       }
 
