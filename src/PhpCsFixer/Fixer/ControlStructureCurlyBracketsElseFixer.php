@@ -45,6 +45,12 @@ class ControlStructureCurlyBracketsElseFixer implements DefinedFixerInterface, W
         continue;
       }
 
+      // Ignore old style constructions.
+      $next = $tokens->getNextNonWhitespace($index);
+      if ($tokens[$next]->getContent() === ':') {
+        continue;
+      }
+
       $tokens[$index-1] = new Token([
         T_WHITESPACE,
         $this->whitespacesConfig->getLineEnding()]
