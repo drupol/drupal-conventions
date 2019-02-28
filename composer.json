@@ -6,11 +6,13 @@
     "type": "library",
     "require": {
         "drupal/coder": "~8.3",
-        "friendsofphp/php-cs-fixer": "~2",
+        "friendsofphp/php-cs-fixer": "2.14.2",
         "jakub-onderka/php-parallel-lint": "~1",
         "phpro/grumphp": "^0.14 || ^0.13 || ^0.12",
-        "symfony/yaml": "^3.4 || ^4.2",
-        "symplify/coding-standard": "~5"
+        "symfony/yaml": "^3.4 || ^4.2"
+    },
+    "suggest": {
+        "symplify/coding-standard": "The LineLength fixer needs this library. Only PHP >= 7."
     },
     "autoload": {
         "psr-4": {
