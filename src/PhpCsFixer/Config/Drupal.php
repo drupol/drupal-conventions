@@ -5,7 +5,6 @@ namespace drupol\DrupalConventions\PhpCsFixer\Config;
 use drupol\DrupalConventions\PhpCsFixer\Fixer\BlankLineBeforeEndOfClass;
 use drupol\DrupalConventions\PhpCsFixer\Fixer\ControlStructureCurlyBracketsElseFixer;
 use drupol\DrupalConventions\PhpCsFixer\Fixer\InlineCommentSpacerFixer;
-use drupol\DrupalConventions\PhpCsFixer\Fixer\LineLengthFixer;
 use drupol\DrupalConventions\PhpCsFixer\Fixer\UppercaseConstantsFixer;
 use PhpCsFixer\Config as PhpCsFixerConfig;
 use PhpCsFixer\Finder;
@@ -78,7 +77,6 @@ abstract class Drupal extends PhpCsFixerConfig implements Config
       new BlankLineBeforeEndOfClass($this->getIndent(), $this->getLineEnding()),
       new ControlStructureCurlyBracketsElseFixer($this->getIndent(), $this->getLineEnding()),
       new InlineCommentSpacerFixer(),
-      new LineLengthFixer($this->getIndent(), $this->getLineEnding()),
       new UppercaseConstantsFixer(),
     ]);
 
