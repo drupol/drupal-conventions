@@ -46,9 +46,26 @@ class ControlStructureCurlyBracketsElseFixer implements DefinedFixerInterface, W
       }
 
       // Ignore old style constructions.
+      // if ($something):
       $next = $tokens->getNextNonWhitespace($index);
-      if ($tokens[$next]->getContent() === ':') {
-        continue;
+
+      if ($token->isGivenKind([T_ELSE])) {
+        if ($tokens[$next]->getContent() === ':') {
+          continue;
+        }
+      }
+
+      // Ignore old style constructions.
+      // elseif ($something):
+      if ($token->isGivenKind([T_ELSEIF])) {
+        if ($tokens[$next]->getContent() === '(') {
+          $endParenthesis = $tokens->findBlockEnd(Tokens::BLOCK_TYPE_PARENTHESIS_BRACE, $next);
+
+          $next = $tokens->getNextNonWhitespace($endParenthesis);
+          if ($tokens[$next]->getContent() === ':') {
+            continue;
+          }
+        }
       }
 
       $tokens[$index-1] = new Token([
