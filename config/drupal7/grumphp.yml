@@ -19,7 +19,6 @@ parameters:
     - module
     - php
     - profile
-    - theme
   tasks.phpcs.whitelist_patterns: []
   tasks.phpcs.standard: ./vendor/drupal/coder/coder_sniffer/Drupal
   tasks.phpcs.warning_severity: ~
