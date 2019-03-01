@@ -55,21 +55,23 @@ abstract class Drupal extends PhpCsFixerConfig implements Config
   /**
    * {@inheritdoc}
    */
-  public function alterCustomFixers(array &$fixers): void {
+  public function alterCustomFixers(array &$fixers)
+  {
 
   }
 
   /**
    * {@inheritdoc}
    */
-  public function alterRules(array &$rules): void {
+  public function alterRules(array &$rules)
+  {
 
   }
 
   /**
    * {@inheritdoc}
    */
-  final public function getCustomFixers(): array
+  final public function getCustomFixers()
   {
     $fixers = parent::getCustomFixers();
 

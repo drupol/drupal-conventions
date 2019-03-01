@@ -17,12 +17,12 @@ interface Config extends ConfigInterface
    * @param array $fixers
    *   The custom fixers.
    */
-  public function alterCustomFixers(array &$fixers): void;
+  public function alterCustomFixers(array &$fixers);
   /**
    * This hook let you alter the rules programmatically.
    *
    * @param array $rules
    *   The rules.
    */
-  public function alterRules(array &$rules): void;
+  public function alterRules(array &$rules);
 }
