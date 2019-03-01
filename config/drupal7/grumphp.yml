@@ -22,7 +22,7 @@ parameters:
     - theme
   tasks.phpcs.whitelist_patterns: []
   tasks.phpcs.standard: ./vendor/drupal/coder/coder_sniffer/Drupal
-  tasks.phpcs.show_warnings: ~
+  tasks.phpcs.show_warnings: true
 
   # Tasks.
   tasks:
