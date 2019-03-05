@@ -41,7 +41,7 @@ class GrumphpTasksExtension implements ExtensionInterface
       if ($container->hasParameter('skip_tasks')) {
         $tasks = $container->getParameter('tasks');
 
-        foreach ($container->getParameter('skip_tasks') as $name => $value) {
+        foreach ($container->getParameter('skip_tasks') as $name) {
           unset($tasks[$name]);
         }
 
