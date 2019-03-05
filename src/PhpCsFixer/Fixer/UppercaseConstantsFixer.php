@@ -12,7 +12,7 @@ use PhpCsFixer\Tokenizer\Tokens;
 /**
  * Class UppercaseConstantsFixer.
  */
-class UppercaseConstantsFixer implements DefinedFixerInterface
+final class UppercaseConstantsFixer implements DefinedFixerInterface
 {
   /**
    * {@inheritdoc}

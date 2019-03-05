@@ -15,7 +15,7 @@ use PhpCsFixer\WhitespacesFixerConfig;
 /**
  * Class ControlStructureCurlyBracketsElseFixer.
  */
-class ControlStructureCurlyBracketsElseFixer implements DefinedFixerInterface, WhitespacesAwareFixerInterface
+final class ControlStructureCurlyBracketsElseFixer implements DefinedFixerInterface, WhitespacesAwareFixerInterface
 {
   /**
    * @var \PhpCsFixer\WhitespacesFixerConfig
