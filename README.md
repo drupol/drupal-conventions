@@ -7,6 +7,9 @@ It's based on [GrumPHP](https://github.com/phpro/grumphp) and comes with a defau
 The following checks are triggered:
 * [Drupal coder](https://www.drupal.org/project/coder) code sniffer's checks
 * Custom [PHP CS Fixer](https://github.com/FriendsOfPHP/PHP-CS-Fixer) configuration
+* PHPLint
+* YAMLlint
+* JSONlint
 
 Drupal 7 and 8 are supported.
 
@@ -37,6 +40,16 @@ Manually add to your `composer.json` file:
     }
 ```
 
+The default Drupal 7 configuration assume that you're using PHP >= 7, use this configuration for Drupal 7 & PHP 5.6.
+
+```yaml
+    "extra": {
+        "grumphp": {
+            "config-default-path": "vendor/drupol/drupal-conventions/config/drupal7/php5.6/grumphp.yml"
+        }
+    }
+```
+
 ### If you're using GrumPHP already
 
 Edit the file `grumphp.yml.dist` or `grumphp.yml` and add on the top it:
@@ -51,6 +64,22 @@ imports:
 imports:
   - { resource: vendor/drupol/drupal-conventions/config/drupal7/grumphp.yml }
 ```
+
+To add an extra Grumphp task:
+
+```yaml
+imports:
+  - { resource: vendor/drupol/drupal-conventions/config/drupal7/grumphp.yml }
+
+parameters:
+  extensions:
+    - drupol\DrupalConventions\GrumphpTasksExtension
+  extra_tasks:
+    phpunit:
+      always_execute: false
+```
+
+In conjunction with `extra_tasks`, use `skip_tasks` to exclude default tasks if needed.
 
 ## Contributing
 
