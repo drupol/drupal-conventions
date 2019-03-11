@@ -5,7 +5,7 @@ namespace drupol\DrupalConventions\PhpCsFixer\Config;
 /**
  * Class Drupal7.
  */
-class Drupal7 extends Drupal
+final class Drupal7 extends Drupal
 {
   /**
    * @var string

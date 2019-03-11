@@ -21,6 +21,18 @@ abstract class Drupal extends PhpCsFixerConfig implements Config
   public static $rules = '/../../../config/drupal/phpcsfixer.rules.yml';
 
   /**
+   * Drupal constructor.
+   *
+   * @param string $name
+   *   The config name.
+   */
+  public function __construct($name = 'default') {
+    parent::__construct($this->getName());
+
+    $this->setRules($this->getCustomRules());
+  }
+
+  /**
    * {@inheritdoc}
    */
   public function getIndent() {
@@ -63,14 +75,6 @@ abstract class Drupal extends PhpCsFixerConfig implements Config
   /**
    * {@inheritdoc}
    */
-  public function alterRules(array &$rules)
-  {
-
-  }
-
-  /**
-   * {@inheritdoc}
-   */
   final public function getCustomFixers()
   {
     $fixers = parent::getCustomFixers();
@@ -89,9 +93,12 @@ abstract class Drupal extends PhpCsFixerConfig implements Config
   }
 
   /**
-   * {@inheritdoc}
+   * Get the custom rules.
+   *
+   * @return array
+   *   The rules.
    */
-  final public function getRules() {
+  private function getCustomRules() {
     $rules = parent::getRules();
 
     $classes = class_parents(static::class);
@@ -112,11 +119,6 @@ abstract class Drupal extends PhpCsFixerConfig implements Config
       $parsed['parameters'] = (array) $parsed['parameters'] + ['rules' => []];
       $rules = array_merge($rules, $parsed['parameters']['rules']);
     }
-
-    // @todo: is this really required.
-    $this->alterRules($rules);
-
-    ksort($rules);
 
     return $rules;
   }
