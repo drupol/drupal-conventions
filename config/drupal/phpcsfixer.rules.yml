@@ -75,6 +75,16 @@ parameters:
         - method_private
       sortAlgorithm: alpha
     ordered_imports: ~
+    phpdoc_indent: true
+    phpdoc_no_empty_return: true
+    phpdoc_no_package: true
+    phpdoc_no_useless_inheritdoc: true
+    phpdoc_order: true
+    phpdoc_scalar:true
+    phpdoc_separation: true
+    phpdoc_single_line_var_spacing: true
+    phpdoc_summary: true
+    phpdoc_trim: true
     return_type_declaration:
       space_before: none
     single_blank_line_at_eof: true
