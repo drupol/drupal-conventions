@@ -4,6 +4,7 @@ parameters:
     array_indentation: true
     array_syntax:
       syntax: long
+    binary_operator_spaces: true
     blank_line_after_opening_tag: true
     blank_line_before_statement:
       statements:
