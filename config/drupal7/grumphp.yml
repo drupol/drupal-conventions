@@ -23,6 +23,14 @@ parameters:
   tasks.phpcs.standard: ./vendor/drupal/coder/coder_sniffer/Drupal
   tasks.phpcs.warning_severity: ~
 
+  # PHP CS Fixer parameters
+  tasks.phpcsfixer2.triggered_by:
+    - inc
+    - install
+    - module
+    - php
+    - profile
+
   # Tasks.
   tasks:
     # PHP Lint
@@ -33,11 +41,12 @@ parameters:
 
     # PHP CS Fixer
     phpcsfixer2:
+      allow_risky: true
       config: '%tasks.phpcsfixer2.config%'
       config_contains_finder: true
-      verbose: true
-      allow_risky: true
+      triggered_by: '%tasks.phpcs.triggered_by%'
       using_cache: false
+      verbose: true
       metadata:
         priority: 4000
 
