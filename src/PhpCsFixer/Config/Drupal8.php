@@ -18,4 +18,11 @@ final class Drupal8 extends Drupal
   public function getName() {
     return 'drupol/drupal-conventions/drupal8';
   }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getRiskyAllowed() {
+    return true;
+  }
 }
