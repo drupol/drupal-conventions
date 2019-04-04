@@ -1,3 +1,6 @@
+[![Latest Stable Version](https://poser.pugx.org/drupol/drupal-conventions/v/stable)](https://packagist.org/packages/drupol/drupal-conventions) 
+[![Total Downloads](https://poser.pugx.org/drupol/drupal-conventions/downloads)](https://packagist.org/packages/drupol/drupal-conventions)
+
 # Drupal conventions
 
 This tool will check your code against Drupal's coding standard.
