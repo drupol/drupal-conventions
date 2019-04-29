@@ -37,5 +37,8 @@
     },
     "require-dev": {
         "codeception/codeception": "^3.0"
+    },
+    "scripts": {
+        "codecept": "./vendor/bin/codecept run"
     }
 }
