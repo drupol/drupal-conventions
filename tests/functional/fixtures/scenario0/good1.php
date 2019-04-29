@@ -10,9 +10,9 @@ function foo(array $arg) {
   }
   elseif ($arg === TRUE) {
     return $arg;
-  }
+  }  
   // do something
-
+  
   $options = array(
     'a',
     'b',
