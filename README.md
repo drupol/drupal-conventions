@@ -1,5 +1,8 @@
-[![Latest Stable Version](https://poser.pugx.org/drupol/drupal-conventions/v/stable)](https://packagist.org/packages/drupol/drupal-conventions) 
-[![Total Downloads](https://poser.pugx.org/drupol/drupal-conventions/downloads)](https://packagist.org/packages/drupol/drupal-conventions)
+[![Latest Stable Version](https://img.shields.io/github/release/drupol/drupal-conventions.svg?style=flat-square)](https://packagist.org/packages/drupol/drupal-conventions)
+ [![Stars](https://img.shields.io/github/stars/drupol/drupal-conventions.svg?style=flat-square)](https://github.com/drupol/drupal-conventions)
+ [![Total Downloads](https://img.shields.io/packagist/dt/drupol/drupal-conventions.svg?style=flat-square)](https://packagist.org/packages/drupol/drupal-conventions)
+ [![Build Status](https://img.shields.io/travis/drupol/drupal-conventions/master.svg?style=flat-square)](https://travis-ci.org/drupol/drupal-conventions)
+ [![License](https://img.shields.io/github/license/drupol/drupal-conventions.svg?style=flat-square)](https://packagist.org/packages/drupol/drupal-conventions)
 
 # Drupal conventions
 
