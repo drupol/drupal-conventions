@@ -27,7 +27,15 @@
             "drupol\\DrupalConventions\\": "./src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "drupol\\DrupalConventions\\Tests\\": "./tests/"
+        }
+    },
     "config": {
         "sort-packages": true
+    },
+    "require-dev": {
+        "codeception/codeception": "^3.0"
     }
 }
