@@ -10,13 +10,20 @@ function foo(array $arg) {
   }
   elseif ($arg === TRUE) {
     return $arg;
-  }  
+  }
   // do something
-  
-  $options = array(
+
+  $ArrayMultiline1 = array(
     'a',
     'b',
     'c', );
+
+  $ArrayMultiline2 = array(
+    'coin',
+    'plop',
+  );
+
+  $ArrayMultiline3 = array('a', 'b', 'c');
 
   if (in_array($arg, $options, true)) {
   }

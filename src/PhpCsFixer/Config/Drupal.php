@@ -5,6 +5,7 @@ namespace drupol\DrupalConventions\PhpCsFixer\Config;
 use drupol\DrupalConventions\PhpCsFixer\Fixer\BlankLineBeforeEndOfClass;
 use drupol\DrupalConventions\PhpCsFixer\Fixer\ControlStructureCurlyBracketsElseFixer;
 use drupol\DrupalConventions\PhpCsFixer\Fixer\InlineCommentSpacerFixer;
+use drupol\DrupalConventions\PhpCsFixer\Fixer\NewlineAfterLastCommaInArrayFixer;
 use drupol\DrupalConventions\PhpCsFixer\Fixer\TryCatchBlock;
 use drupol\DrupalConventions\PhpCsFixer\Fixer\UppercaseConstantsFixer;
 use PhpCsFixer\Config as PhpCsFixerConfig;
@@ -86,6 +87,8 @@ abstract class Drupal extends PhpCsFixerConfig implements Config
       new InlineCommentSpacerFixer(),
       new UppercaseConstantsFixer(),
       new TryCatchBlock($this->getIndent(), $this->getLineEnding()),
+      // Work in progress
+      //new NewlineAfterLastCommaInArrayFixer($this->getIndent(), $this->getLineEnding()),
     ]);
 
     // @todo: is this really required.

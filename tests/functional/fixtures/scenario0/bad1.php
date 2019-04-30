@@ -16,10 +16,20 @@ function foo(array $arg)
   }
 
 
-    $options=[
-      'a',
-      'b',
-      'c'];
+      $ArrayMultiline1=[
+        'a',
+        'b',
+        'c'];
+
+
+  $ArrayMultiline2=array(
+    'coin',
+    'plop',
+  );
+
+
+  $ArrayMultiline3=['a','b','c'];
+
 
 
   if (in_array($arg, $options)) {}
