@@ -30,6 +30,7 @@ parameters:
     #  line_length: 80
     #  inline_short_lines: false
     #  break_long_lines: true
+    Drupal/try_catch_block: true
     Drupal/uppercase_constants: true
     elseif: true
     fully_qualified_strict_types: true

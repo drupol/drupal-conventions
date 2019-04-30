@@ -28,8 +28,7 @@ function foo(array $arg)
   try
   {
     // do something dangerous
-  }
-  catch (Exception $e) {
+  }catch (Exception $e) {
     // exception caught
   }
   finally {
