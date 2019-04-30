@@ -1,6 +1,4 @@
-<?php
-
-function foo(array $arg)
+<?php function foo (array $arg)
 {
   if ($arg == 'foo') {
     return $arg;
@@ -15,6 +13,9 @@ function foo(array $arg)
     // do something
   }
 
+  // Empty comment
+
+  //
 
       $ArrayMultiline1=[
         'a',
@@ -31,6 +32,8 @@ function foo(array $arg)
   $ArrayMultiline3=['a','b','c'];
 
 
+  $concat = "string".'string'."string";
+
 
   if (in_array($arg, $options)) {}
 
@@ -45,5 +48,10 @@ function foo(array $arg)
     // do something
   }
 
+  echo "echo";
+
+  $class = new stdClass;
+
 }
 
+?>

@@ -13,6 +13,8 @@ function foo(array $arg) {
   }
   // do something
 
+  // Empty comment
+
   $ArrayMultiline1 = array(
     'a',
     'b',
@@ -25,6 +27,8 @@ function foo(array $arg) {
 
   $ArrayMultiline3 = array('a', 'b', 'c');
 
+  $concat = 'string' . 'string' . 'string';
+
   if (in_array($arg, $options, true)) {
   }
 
@@ -36,4 +40,8 @@ function foo(array $arg) {
   } finally {
     // do something
   }
+
+  print 'echo';
+
+  $class = new stdClass();
 }
