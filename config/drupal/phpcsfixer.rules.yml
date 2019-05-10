@@ -59,6 +59,7 @@ parameters:
     method_argument_space: true
     multiline_whitespace_before_semicolons: true
     native_function_invocation: false
+    native_function_type_declaration_casing: true
     new_with_braces: true
     no_alternative_syntax: false
     no_blank_lines_after_class_opening: false
@@ -127,7 +128,7 @@ parameters:
       space_before: none
     single_blank_line_at_eof: true
     single_line_after_imports: true
-    single_line_comment_style:
+    single_line_comment_style: true
     single_quote:
       strings_containing_single_quote_chars: false
     space_after_semicolon: true
