@@ -20,7 +20,7 @@ parameters:
     - php
     - profile
   tasks.phpcs.whitelist_patterns: []
-  tasks.phpcs.standard: ./config/drupal7/phpcs.xml
+  tasks.phpcs.standard: ./vendor/drupol/drupal-conventions/config/drupal7/phpcs.xml
   tasks.phpcs.warning_severity: ~
 
   # PHP CS Fixer parameters
