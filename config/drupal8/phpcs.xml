@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
-<ruleset name="Drupal7">
-  <description>Drupal 7 coding standard</description>
+<ruleset name="Drupal8">
+  <description>Drupal 8 coding standard</description>
 
   <!-- Drupal Rulesets. -->
   <rule ref="Drupal" />
 
   <config name="installed_paths" value="vendor/drupal/coder/coder_sniffer" />
-  <config name="drupal_core_version" value="7"/>
+  <config name="drupal_core_version" value="8"/>
 </ruleset>
