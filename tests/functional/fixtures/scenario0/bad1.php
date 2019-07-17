@@ -27,7 +27,10 @@
     'coin',
     'plop',
   );
-
+  foreach ($ArrayMultiline2 as $index => $value)
+  {
+    unset($value);
+  }
 
   $ArrayMultiline3=['a','b','c'];
 

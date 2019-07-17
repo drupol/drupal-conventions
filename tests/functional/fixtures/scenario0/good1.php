@@ -8,7 +8,8 @@ function foo(array $arg) {
   if ($arg === 'foo') {
     return $arg;
   }
-  elseif ($arg === TRUE) {
+
+  if ($arg === TRUE) {
     return $arg;
   }
   // do something
@@ -25,11 +26,15 @@ function foo(array $arg) {
     'plop',
   );
 
+  foreach ($ArrayMultiline2 as $index => $value) {
+    unset($value);
+  }
+
   $ArrayMultiline3 = array('a', 'b', 'c');
 
   $concat = 'string' . 'string' . 'string';
 
-  if (in_array($arg, $options, true)) {
+  if (\in_array($arg, $options, true)) {
   }
 
   try {
