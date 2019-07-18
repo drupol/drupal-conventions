@@ -1,3 +1,5 @@
 <?php
 
-return \drupol\DrupalConventions\PhpCsFixer\Config\Drupal8::create();
+use drupol\PhpCsFixerConfigsDrupal\Config\Drupal8;
+
+return Drupal8::create();

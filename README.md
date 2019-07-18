@@ -24,7 +24,7 @@ Drupal 7 and 8 are supported.
 ## Installation
 
 ```shell
-composer require drupol/drupal-conventions --dev
+composer require --dev drupol/drupal-conventions
 ```
 
 ### If you're not using GrumPHP
@@ -44,16 +44,6 @@ Manually add to your `composer.json` file:
     "extra": {
         "grumphp": {
             "config-default-path": "vendor/drupol/drupal-conventions/config/drupal7/grumphp.yml"
-        }
-    }
-```
-
-The default Drupal 7 configuration assume that you're using PHP >= 7, use this configuration for Drupal 7 & PHP 5.6.
-
-```yaml
-    "extra": {
-        "grumphp": {
-            "config-default-path": "vendor/drupol/drupal-conventions/config/drupal7/php5.6/grumphp.yml"
         }
     }
 ```
@@ -80,14 +70,12 @@ imports:
   - { resource: vendor/drupol/drupal-conventions/config/drupal7/grumphp.yml }
 
 parameters:
-  extensions:
-    - drupol\DrupalConventions\GrumphpTasksExtension
   extra_tasks:
     phpunit:
       always_execute: false
 ```
 
-In conjunction with `extra_tasks`, use `skip_tasks` to exclude default tasks if needed.
+In conjunction with `extra_tasks`, use `skip_tasks` to skip tasks if needed.
 
 ## Contributing
 
