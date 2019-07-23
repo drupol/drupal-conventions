@@ -12,6 +12,7 @@ parameters:
     - drupol\PhpConventions\GrumphpTasksExtension
 
   # PHP Code Sniffer parameters.
+  tasks.phpcs.exclude: ~
   tasks.phpcs.ignore_patterns:
     - vendor/
     - node_modules/
@@ -77,8 +78,9 @@ parameters:
 
     # PHP Code Sniffer.
     phpcs:
-      standard: '%tasks.phpcs.standard%'
+      exclude: '%tasks.phpcs.exclude%'
       ignore_patterns: '%tasks.phpcs.ignore_patterns%'
+      standard: '%tasks.phpcs.standard%'
       triggered_by: '%tasks.phpcs.triggered_by%'
       whitelist_patterns: '%tasks.phpcs.whitelist_patterns%'
       warning_severity: '%tasks.phpcs.warning_severity%'
