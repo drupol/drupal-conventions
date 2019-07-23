@@ -8,7 +8,8 @@ parameters:
     succeeded: ~
 
   extensions:
-    - drupol\DrupalConventions\GrumphpTasksExtension
+    - Wearejust\GrumPHPExtra\Extension\Loader
+    - drupol\PhpConventions\GrumphpTasksExtension
 
   # PHP Code Sniffer parameters.
   tasks.phpcs.ignore_patterns:
@@ -27,21 +28,52 @@ parameters:
   tasks.phpcs.standard: ./vendor/drupal/coder/coder_sniffer/Drupal
   tasks.phpcs.warning_severity: ~
 
+  # PHP CS Fixer parameters
+  tasks.phpcsfixer2.triggered_by:
+    - inc
+    - install
+    - module
+    - php
+    - profile
+    - theme
+
   # Tasks.
   tasks:
+    # Composer checks
+    composer:
+      metadata:
+        priority: 6300
+
+    # Composer Normalize
+    composer_normalize:
+      metadata:
+        priority: 6200
+
     # PHP Lint
     phplint:
       triggered_by: ['php', 'module', 'install', 'profile', 'inc', 'theme']
       metadata:
         priority: 5000
 
-    # PHP CS Fixer
-    phpcsfixer2:
+    # PHP CS Fixer (autofix)
+    php_cs_auto_fixerv2:
       config: '%tasks.phpcsfixer2.config%'
       config_contains_finder: true
+      triggered_by: '%tasks.phpcsfixer2.triggered_by%'
       verbose: true
       allow_risky: true
       using_cache: false
+      metadata:
+        priority: 4500
+
+    # PHP CS Fixer
+    phpcsfixer2:
+      allow_risky: true
+      config: '%tasks.phpcsfixer2.config%'
+      config_contains_finder: true
+      triggered_by: '%tasks.phpcsfixer2.triggered_by%'
+      using_cache: false
+      verbose: true
       metadata:
         priority: 4000
 
@@ -72,3 +104,13 @@ parameters:
       detect_key_conflicts: true
       metadata:
         priority: 1000
+
+services:
+  task.composer_normalize:
+    class: drupol\PhpConventions\Grumphp\Task\ComposerNormalize
+    arguments:
+      - '@config'
+      - '@process_builder'
+      - '@formatter.phpcsfixer'
+    tags:
+      - {name: grumphp.task, config: composer_normalize}
