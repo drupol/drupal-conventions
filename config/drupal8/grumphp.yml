@@ -8,7 +8,6 @@ parameters:
     succeeded: ~
 
   extensions:
-    - Wearejust\GrumPHPExtra\Extension\Loader
     - drupol\PhpConventions\GrumphpTasksExtension
 
   # PHP Code Sniffer parameters.
@@ -44,11 +43,6 @@ parameters:
     composer:
       metadata:
         priority: 6300
-
-    # Composer Normalize
-    composer_normalize:
-      metadata:
-        priority: 6200
 
     # PHP Lint
     phplint:
@@ -106,13 +100,3 @@ parameters:
       detect_key_conflicts: true
       metadata:
         priority: 1000
-
-services:
-  task.composer_normalize:
-    class: drupol\PhpConventions\Grumphp\Task\ComposerNormalize
-    arguments:
-      - '@config'
-      - '@process_builder'
-      - '@formatter.phpcsfixer'
-    tags:
-      - {name: grumphp.task, config: composer_normalize}
