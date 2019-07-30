@@ -14,8 +14,8 @@
     "require": {
         "php": "^5.6",
         "drupal/coder": "^8.3.5",
-        "drupol/php-conventions": "^1",
-        "drupol/phpcsfixer-configs-drupal": "^1",
+        "drupol/php-conventions": "^1.5.8",
+        "drupol/phpcsfixer-configs-drupal": "^1.0.2",
         "friendsofphp/php-cs-fixer": "^2.15",
         "jakub-onderka/php-parallel-lint": "^1",
         "phpro/grumphp": "^0.14",
