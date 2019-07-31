@@ -8,11 +8,9 @@ parameters:
     succeeded: ~
 
   extensions:
-    - Wearejust\GrumPHPExtra\Extension\Loader
     - drupol\PhpConventions\GrumphpTasksExtension
 
   # PHP Code Sniffer parameters.
-  tasks.phpcs.exclude: []
   tasks.phpcs.ignore_patterns:
     - vendor/
     - node_modules/
@@ -45,11 +43,6 @@ parameters:
       metadata:
         priority: 6300
 
-    # Composer Normalize
-    composer_normalize:
-      metadata:
-        priority: 6200
-
     # PHP Lint
     phplint:
       triggered_by: ['php', 'module', 'install', 'profile', 'inc', 'theme']
@@ -80,7 +73,6 @@ parameters:
 
     # PHP Code Sniffer.
     phpcs:
-      exclude: '%tasks.phpcs.exclude%'
       standard: '%tasks.phpcs.standard%'
       ignore_patterns: '%tasks.phpcs.ignore_patterns%'
       triggered_by: '%tasks.phpcs.triggered_by%'
@@ -106,13 +98,3 @@ parameters:
       detect_key_conflicts: true
       metadata:
         priority: 1000
-
-services:
-  task.composer_normalize:
-    class: drupol\PhpConventions\Grumphp\Task\ComposerNormalize
-    arguments:
-      - '@config'
-      - '@process_builder'
-      - '@formatter.phpcsfixer'
-    tags:
-      - {name: grumphp.task, config: composer_normalize}
