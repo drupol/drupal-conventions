@@ -8,11 +8,9 @@ parameters:
     succeeded: ~
 
   extensions:
-    - Wearejust\GrumPHPExtra\Extension\Loader
     - drupol\PhpConventions\GrumphpTasksExtension
 
   # PHP Code Sniffer parameters.
-  tasks.phpcs.exclude: []
   tasks.phpcs.ignore_patterns:
     - vendor/
     - node_modules/
@@ -42,11 +40,6 @@ parameters:
     composer:
       metadata:
         priority: 6300
-
-    # Composer Normalize
-    composer_normalize:
-      metadata:
-        priority: 6200
 
     # PHP Lint
     phplint:
@@ -78,7 +71,6 @@ parameters:
 
     # PHP Code Sniffer.
     phpcs:
-      exclude: '%tasks.phpcs.exclude%'
       ignore_patterns: '%tasks.phpcs.ignore_patterns%'
       standard: '%tasks.phpcs.standard%'
       triggered_by: '%tasks.phpcs.triggered_by%'
