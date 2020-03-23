@@ -17,7 +17,7 @@
         "drupol/php-conventions": "^1.6.7",
         "drupol/phpcsfixer-configs-drupal": "^1.0.6",
         "friendsofphp/php-cs-fixer": "^2.16.1",
-        "jakub-onderka/php-parallel-lint": "^1",
+        "php-parallel-lint/php-parallel-lint": "^1.1.0",
         "ergebnis/composer-normalize": "^2.3.2",
         "phpro/grumphp": "^0.16.1 || ^0.17.1 || ^0.18.0",
         "phpstan/extension-installer": "^1.0.3",
