@@ -1,108 +1,95 @@
 imports:
-  - { resource: tasks.phpcsfixer2.config.yml }
+    - { resource: tasks.phpcsfixer2.config.yml }
 
 parameters:
-  process_timeout: 3600
-  ascii:
-    failed: ~
-    succeeded: ~
+    # PHP Code Sniffer parameters.
+    tasks.phpcs.exclude: []
+    tasks.phpcs.ignore_patterns:
+        - vendor/
+        - node_modules/
+        - tests/fixtures/
+        - spec
+    tasks.phpcs.triggered_by:
+        - inc
+        - install
+        - module
+        - php
+        - profile
+        - theme
+    tasks.phpcs.whitelist_patterns: []
+    tasks.phpcs.standard: ./vendor/drupol/drupal-conventions/config/drupal8/phpcs.xml
+    tasks.phpcs.warning_severity: ~
 
-  extensions:
-    - Wearejust\GrumPHPExtra\Extension\Loader
-    - drupol\PhpConventions\GrumphpTasksExtension
+    # PHP CS Fixer parameters
+    tasks.phpcsfixer2.triggered_by:
+        - inc
+        - install
+        - module
+        - php
+        - profile
+        - theme
 
-  # PHP Code Sniffer parameters.
-  tasks.phpcs.exclude: []
-  tasks.phpcs.ignore_patterns:
-    - vendor/
-    - node_modules/
-    - tests/fixtures/
-    - spec
-  tasks.phpcs.triggered_by:
-    - inc
-    - install
-    - module
-    - php
-    - profile
-    - theme
-  tasks.phpcs.whitelist_patterns: []
-  tasks.phpcs.standard: ./vendor/drupal/coder/coder_sniffer/Drupal
-  tasks.phpcs.warning_severity: ~
+grumphp:
+    process_timeout: 3600
+    parallel:
+        enabled: false
+        max_workers: 32
+    fixer:
+        enabled: true
+        fix_by_default: true
 
-  # PHP CS Fixer parameters
-  tasks.phpcsfixer2.triggered_by:
-    - inc
-    - install
-    - module
-    - php
-    - profile
-    - theme
+    extensions:
+        - drupol\PhpConventions\GrumphpTasksExtension
 
-  # Tasks.
-  tasks:
-    # Composer checks
-    composer:
-      metadata:
-        priority: 6300
+    # Tasks.
+    tasks:
+        # Composer checks
+        composer: ~
 
-    # Composer Normalize
-    composer_normalize:
-      metadata:
-        priority: 6200
+        # Composer Normalize
+        composer_normalize: ~
 
-    # PHP Lint
-    phplint:
-      triggered_by: ['php', 'module', 'install', 'profile', 'inc', 'theme']
-      metadata:
-        priority: 5000
+        # YAML Lint
+        yamllint:
+            whitelist_patterns: []
+            ignore_patterns: []
+            object_support: true
+            exception_on_invalid_type: true
+            parse_constant: true
+            parse_custom_tags: true
 
-    # PHP CS Fixer (autofix)
-    php_cs_auto_fixerv2:
-      config: '%tasks.phpcsfixer2.config%'
-      config_contains_finder: true
-      triggered_by: '%tasks.phpcsfixer2.triggered_by%'
-      verbose: true
-      allow_risky: true
-      using_cache: false
-      metadata:
-        priority: 4500
+        # JSON Lint
+        jsonlint:
+            ignore_patterns: []
+            detect_key_conflicts: true
 
-    # PHP CS Fixer
-    phpcsfixer2:
-      allow_risky: true
-      config: '%tasks.phpcsfixer2.config%'
-      config_contains_finder: true
-      triggered_by: '%tasks.phpcsfixer2.triggered_by%'
-      using_cache: false
-      verbose: true
-      metadata:
-        priority: 4000
+        # PHP Lint
+        phplint:
+            triggered_by: ['php', 'module', 'install', 'profile', 'inc']
 
-    # PHP Code Sniffer.
-    phpcs:
-      exclude: '%tasks.phpcs.exclude%'
-      standard: '%tasks.phpcs.standard%'
-      ignore_patterns: '%tasks.phpcs.ignore_patterns%'
-      triggered_by: '%tasks.phpcs.triggered_by%'
-      whitelist_patterns: '%tasks.phpcs.whitelist_patterns%'
-      warning_severity: '%tasks.phpcs.warning_severity%'
-      metadata:
-        priority: 3000
+        # Twig CS
+        twigcs:
+            path: '%tasks.twigcs.path%'
+            ruleset: '%tasks.twigcs.ruleset%'
+            severity: '%tasks.twigcs.severity%'
+            triggered_by: '%tasks.twigcs.triggered_by%'
 
-    # YAML Lint
-    yamllint:
-      whitelist_patterns: []
-      ignore_patterns: []
-      object_support: true
-      exception_on_invalid_type: true
-      parse_constant: true
-      parse_custom_tags: true
-      metadata:
-        priority: 2000
+        # PHP CS Fixer
+        phpcsfixer2:
+            allow_risky: true
+            config: '%tasks.phpcsfixer2.config%'
+            config_contains_finder: true
+            triggered_by: '%tasks.phpcsfixer2.triggered_by%'
+            using_cache: false
+            verbose: true
 
-    # JSON Lint
-    jsonlint:
-      ignore_patterns: []
-      detect_key_conflicts: true
-      metadata:
-        priority: 1000
+        # PHP Code Sniffer.
+        phpcs:
+            exclude: '%tasks.phpcs.exclude%'
+            ignore_patterns: '%tasks.phpcs.ignore_patterns%'
+            standard: '%tasks.phpcs.standard%'
+            triggered_by: '%tasks.phpcs.triggered_by%'
+            whitelist_patterns: '%tasks.phpcs.whitelist_patterns%'
+            warning_severity: '%tasks.phpcs.warning_severity%'
+            metadata:
+                priority: 3000
