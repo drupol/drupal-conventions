@@ -1,5 +1,5 @@
 imports:
-    - { resource: tasks.phpcsfixer2.config.yml }
+    - { resource: tasks.phpcsfixer.config.yml }
 
 parameters:
     # PHP Code Sniffer parameters.
@@ -20,7 +20,7 @@ parameters:
     tasks.phpcs.warning_severity: ~
 
     # PHP CS Fixer parameters
-    tasks.phpcsfixer2.triggered_by:
+    tasks.phpcsfixer.triggered_by:
         - inc
         - install
         - module

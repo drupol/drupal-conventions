@@ -1,7 +1,11 @@
 imports:
-    - { resource: tasks.phpcsfixer2.config.yml }
+    - { resource: ../../../../drupol/php-conventions/config/php73/grumphp.yml }
+    - { resource: tasks.phpcsfixer.config.yml }
 
 parameters:
+    # Grumphp license task
+    tasks.license.name: LGPL-2.0
+
     # PHP Code Sniffer parameters.
     tasks.phpcs.exclude: []
     tasks.phpcs.ignore_patterns:
@@ -21,75 +25,10 @@ parameters:
     tasks.phpcs.warning_severity: ~
 
     # PHP CS Fixer parameters
-    tasks.phpcsfixer2.triggered_by:
+    tasks.phpcsfixer.triggered_by:
         - inc
         - install
         - module
         - php
         - profile
         - theme
-
-grumphp:
-    process_timeout: 3600
-    parallel:
-        enabled: false
-        max_workers: 32
-    fixer:
-        enabled: true
-        fix_by_default: true
-
-    extensions:
-        - drupol\PhpConventions\GrumphpTasksExtension
-
-    # Tasks.
-    tasks:
-        # Composer checks
-        composer: ~
-
-        # Composer Normalize
-        composer_normalize: ~
-
-        # YAML Lint
-        yamllint:
-            whitelist_patterns: []
-            ignore_patterns: []
-            object_support: true
-            exception_on_invalid_type: true
-            parse_constant: true
-            parse_custom_tags: true
-
-        # JSON Lint
-        jsonlint:
-            ignore_patterns: []
-            detect_key_conflicts: true
-
-        # PHP Lint
-        phplint:
-            triggered_by: ['php', 'module', 'install', 'profile', 'inc']
-
-        # Twig CS
-        twigcs:
-            path: '%tasks.twigcs.path%'
-            ruleset: '%tasks.twigcs.ruleset%'
-            severity: '%tasks.twigcs.severity%'
-            triggered_by: '%tasks.twigcs.triggered_by%'
-
-        # PHP CS Fixer
-        phpcsfixer2:
-            allow_risky: true
-            config: '%tasks.phpcsfixer2.config%'
-            config_contains_finder: true
-            triggered_by: '%tasks.phpcsfixer2.triggered_by%'
-            using_cache: false
-            verbose: true
-
-        # PHP Code Sniffer.
-        phpcs:
-            exclude: '%tasks.phpcs.exclude%'
-            ignore_patterns: '%tasks.phpcs.ignore_patterns%'
-            standard: '%tasks.phpcs.standard%'
-            triggered_by: '%tasks.phpcs.triggered_by%'
-            whitelist_patterns: '%tasks.phpcs.whitelist_patterns%'
-            warning_severity: '%tasks.phpcs.warning_severity%'
-            metadata:
-                priority: 3000

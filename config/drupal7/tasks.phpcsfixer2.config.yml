@@ -1,2 +1,2 @@
 parameters:
-  tasks.phpcsfixer2.config: ./vendor/drupol/drupal-conventions/config/drupal7/php_cs_fixer.config.php
+  tasks.phpcsfixer.config: ./vendor/drupol/drupal-conventions/config/drupal7/php_cs_fixer.config.php
