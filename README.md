@@ -31,6 +31,14 @@ composer require --dev drupol/drupal-conventions
 
 Manually add to your `composer.json` file:
 
+#### Drupal 9
+```yaml
+    "extra": {
+        "grumphp": {
+            "config-default-path": "vendor/drupol/drupal-conventions/config/drupal9/grumphp.yml"
+        }
+    }
+```
 #### Drupal 8
 ```yaml
     "extra": {
